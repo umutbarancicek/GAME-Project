@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using Pathfinding;
+//using System.Diagnostics;
 
 public enum UnitType{
 	Ground,
@@ -76,6 +77,7 @@ public abstract class Playable : StrategyObject {
 		if (model != null)
 		{
 			anim = model.GetComponent<Animator>();
+			UnityEngine.Debug.Log("anim: " + anim.name,anim);
 		}
 
 		// Check if anim is not null before using it
@@ -203,7 +205,7 @@ public abstract class Playable : StrategyObject {
 		if (life <= 0) Die ();
 		
 		attacking();
-		if (!immobile) moving();
+		if (immobile==false) moving();
 
 		if (selected) UpdateSelectLife ();
 
@@ -235,7 +237,7 @@ public abstract class Playable : StrategyObject {
 		    attack.damage != 0 && 
 			doFreq (Action.Attack, attack.speed) ) {
 				performAttack(target, attack);
-		} else if(anim =null) anim.SetBool ("Attack", false);
+		} else if(anim ==null) anim.SetBool ("Attack", false);
 	}
     private void moving()
     {

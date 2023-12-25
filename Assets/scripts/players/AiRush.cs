@@ -37,7 +37,7 @@ public class AiRush : Player{
 	}	
 	public void Update(){
 		if (timeToRush <= 0) {
-			if( !rushInProgress) {
+			if(rushInProgress==false) {
 				StartCoroutine(CreateEnemies(enemiesInRush , 0.1f));
 				rushInProgress = true;
 			} else {
